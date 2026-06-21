@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐彩汇 · 持续关注的随行手册</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: #f2f4f8;
+            color: #1e2229;
+            line-height: 1.6;
+        }
+
+        /* 深色头图区域 */
+        .hero {
+            background: linear-gradient(135deg, #0b1a2f 0%, #14273e 100%);
+            color: #eaeef3;
+            padding: 4rem 1.5rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #f2f4f8;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 1rem;
+            color: #f9fbfd;
+        }
+
+        .hero p {
+            max-width: 640px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #bcccdb;
+            font-weight: 300;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #cbdae6;
+            backdrop-filter: blur(2px);
+        }
+
+        /* 正文区 —— 目录感布局 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 2.5rem;
+            background: #ffffff;
+            padding: 1rem 1.5rem;
+            margin: -1.5rem auto 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            position: relative;
+            z-index: 5;
+            max-width: 800px;
+        }
+
+        .nav-links a {
+            color: #1a2b3c;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #2a7faa;
+            color: #1a5b7a;
+        }
+
+        /* 卡片风格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #e5e9f0;
+            transition: box-shadow 0.2s ease, transform 0.15s;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: #0f1f2e;
+            letter-spacing: 0.01em;
+        }
+
+        .card p, .card li {
+            font-size: 0.95rem;
+            color: #374151;
+        }
+
+        .card ul {
+            padding-left: 1.2rem;
+            list-style: disc;
+        }
+
+        .card ul li {
+            margin-bottom: 0.3rem;
+        }
+
+        .accent-link {
+            color: #1d6f96;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #9bbfd4;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .accent-link:hover {
+            color: #0a405a;
+            border-bottom-color: #0a405a;
+        }
+
+        /* 提示区 */
+        .tip-block {
+            background: #eaf0f6;
+            border-left: 5px solid #2a7faa;
+            padding: 1.5rem 1.8rem;
+            border-radius: 12px;
+            margin: 1.5rem 0 2.8rem;
+        }
+
+        .tip-block p {
+            font-size: 1rem;
+            color: #1d2e3b;
+            margin-bottom: 0.3rem;
+        }
+
+        .tip-block strong {
+            color: #12425c;
+        }
+
+        /* FAQ 摘要区 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8ed;
+            margin-top: 1rem;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            color: #0f1f2e;
+            font-weight: 500;
+        }
+
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px solid #eceff5;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-item h4 {
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: #1c2f3f;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-item p {
+            font-size: 0.92rem;
+            color: #4a5568;
+        }
+
+        .faq-item .accent-link {
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+
+        /* 相关信息区 */
+        .related-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            padding: 1.2rem 1.8rem;
+            border-radius: 40px;
+            margin: 2rem 0 1.5rem;
+            border: 1px solid #dfe6ee;
+        }
+
+        .related-info span {
+            color: #3f5061;
+            font-size: 0.95rem;
+        }
+
+        .related-info small {
+            color: #778a9c;
+            font-size: 0.85rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dce3eb;
+            margin: 1.8rem 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem 1.5rem;
+            color: #6a7c8b;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #2f6b8a;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 0.95rem; }
+            .card-grid { gap: 1rem; }
+            .related-info { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>乐彩汇</h1>
+        <p>一种更安静的关注方式 —— 不追赶信息，而是让有用的内容自然沉淀。</p>
+        <span class="badge">再次访问 · 收藏 · 持续随行</span>
+    </header>
+
+    <!-- 正文：目录感布局 -->
+    <div class="container">
+
+        <!-- 类似“目录导航” -->
+        <div class="nav-links">
+            <a href="#intro">说明区</a>
+            <a href="#tips">提示区</a>
+            <a href="#faq">常见想法</a>
+            <a href="#related">相关信息</a>
+        </div>
+
+        <!-- 说明区 / 介绍 + 场景 -->
+        <section id="intro" style="margin-bottom: 1.5rem;">
+            <h2 style="font-size: 1.6rem; font-weight: 500; color: #0b1a2f; margin-bottom: 1rem;">为什么值得再次回来</h2>
+            <p style="font-size: 1rem; color: #2d3f4f; max-width: 800px;">
+                网站和工具来来去去，但有些地方会让人愿意存个书签、隔段时间再点开。<strong>乐彩汇</strong> 属于后者。
+                没有推送打扰，也不靠标题留住注意力。它提供的是可以慢慢翻阅的内容，以及一个稳定的信息角落。
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.98rem; color: #3b4d5e;">
+                无论你是第一次路过，还是已经收藏过这个链接，把 <a href="https://m-lecaihui.com" class="accent-link">乐彩汇</a> 放在常用书签里，
+                意味着你给自己保留了一个可以随时落脚的、低噪声的阅读空间。
+            </p>
+        </section>
+
+        <!-- 卡片网格：特点 + 场景 -->
+        <div class="card-grid">
+            <div class="card">
+                <h3>📌 收藏的理由</h3>
+                <ul>
+                    <li>内容更新有节奏，不轰炸</li>
+                    <li>分类清晰，回溯方便</li>
+                    <li>没有隐藏的算法推荐</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>🔍 适合什么时候看</h3>
+                <p>等一杯咖啡、通勤路上、或者需要一个安静页面代替社交软件的时候。不需要登录，打开即用。</p>
+            </div>
+            <div class="card">
+                <h3>🧭 持续关注的方式</h3>
+                <p>把 <a href="https://m-lecaihui.com" class="accent-link">乐彩汇</a> 加入浏览器书签，或者直接记住这个域名。
+                每次回来都能看到新内容，但界面还是你习惯的样子。</p>
+            </div>
+        </div>
+
+        <!-- 提示区 -->
+        <div class="tip-block" id="tips">
+            <p><strong>💡 提示区</strong></p>
+            <p>如果你在手机浏览器上打开过 <a href="https://m-lecaihui.com" class="accent-link">乐彩汇</a>，可以把它添加到主屏幕（iOS 的“共享 → 添加到主屏幕”，Android 的“添加到主屏幕”）。
+            下次找起来就像打开一个本地应用一样快。</p>
+            <p style="margin-top: 0.6rem;">另外，不用刻意安排时间——想起的时候点开，随便翻翻，也许正好遇到你感兴趣的内容。</p>
+        </div>
+
+        <!-- FAQ 摘要区 -->
+        <div class="faq-summary" id="faq">
+            <h2>常见想法 · 简短回答</h2>
+            <div class="faq-item">
+                <h4>「我上次好像看过一部分，怎么找到？」</h4>
+                <p>网站上没有复杂的会员系统，但页面结构比较规整。你可以根据记忆中的标题或栏目大致浏览。
+                如果你把 <a href="https://m-lecaihui.com" class="accent-link">乐彩汇</a> 放在书签栏，每次回来都在同一个位置。</p>
+            </div>
+            <div class="faq-item">
+                <h4>「内容会一直保留吗？」</h4>
+                <p>目前没有清理旧内容的计划。之前发布的页面和资料都会留在原处，可以像翻一本旧杂志一样回溯。</p>
+            </div>
+            <div class="faq-item">
+                <h4>「有必要收藏吗？」</h4>
+                <p>如果你觉得以后还会再来看，就收藏。大多数人是靠书签和记忆回来的，毕竟网站的名字不算难记。</p>
+            </div>
+            <div style="margin-top: 1.2rem; font-size: 0.92rem; color: #4e6376;">
+                <span>更多 FAQ 直接在 <a href="https://m-lecaihui.com" class="accent-link">乐彩汇</a> 内各个页面底部可以找到。</span>
+            </div>
+        </div>
+
+        <!-- 相关信息区 -->
+        <div class="related-info" id="related">
+            <span>📋 相关信息</span>
+            <span><small>更新节奏：不定期 · 每次都有变化</small></span>
+            <span><small>内容方向：知识库入口 · 安静阅读</small></span>
+        </div>
+
+        <hr>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: baseline;">
+            <p style="font-size: 0.92rem; color: #3b5063;">用浏览器打开 <a href="https://m-lecaihui.com" class="accent-link">乐彩汇</a>，然后把它添加到书签或主屏幕 —— 这是最直接的持续关注方式。</p>
+            <p style="font-size: 0.85rem; color: #6f8397;">不需要注册，不需要订阅邮件。</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p><a href="https://m-lecaihui.com" style="color: #1d5b7a; text-decoration: none; font-weight: 500;">乐彩汇</a> · 一份安静的随行手册</p>
+        <p style="margin-top: 0.3rem;">页面内容仅供介绍，实际信息以网站为准。</p>
+    </footer>
+
+</body>
+</html>
